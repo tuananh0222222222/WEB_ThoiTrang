@@ -1,0 +1,35 @@
+﻿@model List<Model.EF.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+
+
+
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Create Date</th>
+        <th>Order</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        @foreach (var item in Model)
+        {
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@(item.CreatedDate.HasValue ? item.CreatedDate.Value.ToString("dd/MM/yyyy") : "")</td>
+            <td>@item.Order.GetValueOrDefault(0)</td>
+            <td>@(item.Status.GetValueOrDefault(false)?"Active" : "Block")</td>
+
+        }
+
+    </tr>
+
+
+</table>
+
